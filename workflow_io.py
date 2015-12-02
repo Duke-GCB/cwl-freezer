@@ -32,6 +32,7 @@ def find_key(d, key, path=[]):
         for k, v in d.items():
             for f in find_key(v, key, path + [k]):
                 yield f
+
 def extract_paths_image_ids(workflow):
     results = []
     for x in find_key(workflow, IMAGE_ID):
@@ -39,9 +40,12 @@ def extract_paths_image_ids(workflow):
         results.append({PATH: x, IMAGE_ID: image_id})
     return results
 
-def extract_image_ids(workflow):
-    all_ids = map(lambda x: x[IMAGE_ID], extract_paths_image_ids(workflow))
+def extract_image_ids(paths_image_ids):
+    all_ids = map(lambda x: x[IMAGE_ID], paths_image_ids)
     return list(set(all_ids))
+
+def replace_values(workflow, key_path, value):
+    return dpath.util.set(workflow, key_path, value)
 
 def print_names(image_names):
     for name in image_names:
