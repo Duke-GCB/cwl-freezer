@@ -4,6 +4,9 @@ import docker_io as dk
 def load_workflow(workflow_doc):
     return wf.parse_workflow(workflow_doc)
 
+def save_workflow(workflow, workflow_doc):
+    return wf.save_workflow(workflow, workflow_doc)
+
 # returns list of images (names+ids) and the frozen document
 def freeze_workflow(workflow): # does not parse
     image_paths = wf.extract_paths_image_ids(workflow)

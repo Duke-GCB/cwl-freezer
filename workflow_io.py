@@ -3,6 +3,7 @@ import dpath.util
 import urlparse
 from schema_salad import schema
 from cwltool import process, update
+import yaml
 
 PATH='path'
 IMAGE_ID='dockerImageId'
@@ -19,6 +20,10 @@ def parse_workflow(cwlpath):
     document_loader.idx.clear()
     processobj, metadata = schema.load_and_validate(document_loader, avsc_names, workflowobj, strict)
     return processobj
+
+def save_workflow(workflow, workflow_file):
+    with open(workflow_file, 'w') as f:
+        yaml.dump(workflow, stream=f)
 
 def find_key(d, key, path=[]):
     if isinstance(d, list):
