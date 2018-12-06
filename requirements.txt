@@ -34,7 +34,7 @@ PyYAML==3.11
 pyzmq==15.0.0
 rdflib==4.2.1
 rdflib-jsonld==0.3
-requests==2.8.1
+requests==2.20.1
 schema-salad==1.0.5
 shellescape==3.4.1
 simplegeneric==0.8.1
